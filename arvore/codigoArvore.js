@@ -1,4 +1,5 @@
 class Node {
+    //Cria os atributos do objeto Node da árvore
     constructor() {
         this.data = null;
         this.left = null;
@@ -7,14 +8,12 @@ class Node {
 }
 
 class Arvore {
+    //Cria o atributo root da árvore
     constructor() {
         this.root = null;
     }
 
-    isEmpty() {
-
-    }
-
+    //Insere o valor no nó
     insert(data) {
         const newNode = new Node(data);
 
@@ -26,6 +25,7 @@ class Arvore {
             this.insertNode(this.root, newNode)
     }
 
+    //Insere o nó
     insertNode(node, newNode) {
         if(newNode.data < node.data) {
             if(node.left === null){
@@ -45,10 +45,12 @@ class Arvore {
         
     }
 
+    //Remove o valor no nó
     remove(data) {
         this.root = this.removeNode(this.root, data);
     }
 
+    //Remove o nó
     removeNode(node, data) {
         if(node === null)
             return null;
@@ -90,6 +92,7 @@ class Arvore {
             return this.findMinimumNode(node.left);
     }
 
+    //Apresenta todos os nós
     showNodes() {
         if(this.root === null)
             console.log("A árvore está vazia.");
@@ -97,6 +100,7 @@ class Arvore {
             this.inOrder(this.root);
     }
 
+    //Apresenta os nós em ordem(nó esquerdo, nó principal, nó direito)
     inOrder(node) {
         if(node !== null) {
             this.inOrder(node.left);
@@ -105,7 +109,7 @@ class Arvore {
         }
     }
 }
-
+//Exemplo de funcionamento do código
 const arvore = new Arvore();
 arvore.insert(10);
 arvore.insert(5);

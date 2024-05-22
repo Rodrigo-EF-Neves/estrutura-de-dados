@@ -6,25 +6,30 @@ class Node {
 }
 
 class Pilha {
+    //Cria os atributos do objeto Pilha
     constructor() {
         this.head = null;
         this.tail = null;
         this.numberOfElements = 0;
     }
 
+    //Função para validar se a pilha está vazia
     isEmpty() {
         return this.numberOfElements === 0;
     }
 
+    //Função que adiciona um nó na pilha
     insertElement(data) {
         const newNode = new Node(data);
 
+        //Se a pilha está vazia, a head e a tail recebem o valor do parâmetro
         if(this.isEmpty()) {
             this.head = newNode;
             this.head.data = data;
             this.tail = newNode;
             this.tail.data = data;
         } else {
+            //Se a pilha não está vazia, faz com que a nova tail seja o elemento inserido
             this.tail.next = newNode;
             this.tail = newNode;
             this.tail.data = data;
@@ -33,11 +38,14 @@ class Pilha {
         this.numberOfElements++;
     }
 
+    //Função que remove um nó da pilha
     removeElement() {
         if(this.isEmpty()) {
             console.log("A pilha está vazia.");
             return;
         } else {
+            //Se o nó da head é igual a tail, só existe um elemento para ser removido
+            //Senão o nó é percorrido e o penúltimo nó se torna a tail e a referência para o próximo nó é nula
             if(this.head === this.tail) {
                 this.head = null;
                 this.tail = null;
@@ -53,6 +61,7 @@ class Pilha {
         this.numberOfElements--;
     }
 
+    //Função que exibe os itens da pilha
     displayItems() {
         if(this.isEmpty()) {
             console.log("A pilha está vazia.");
